@@ -1,0 +1,37 @@
+<div class="container">
+  <header class="jumbotron">
+    <h1 class="display-3">
+      <strong>{{currentManager.name}}</strong>, Welcome to my app.
+    </h1>
+  </header>
+  <div class="course-container">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title">All Enrollments</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Student Name</th>
+              <th scope="col">Course Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of enrollmentList; index as ind">
+              <th scope="row">{{ind}}</th>
+              <td>{{item.student.name}}</td>
+              <td>{{item.course.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

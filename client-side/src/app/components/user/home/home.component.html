@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="alert alert-danger" *ngIf="errorMessage">
+    <strong>Error!</strong> {{errorMessage}}
+  </div>
+  <div class="alert alert-success" *ngIf="infoMessage">
+    <strong>Successful!</strong> {{infoMessage}}
+  </div>
+  <div class="course-container">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title">All Courses</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Instructor</th>
+              <th scope="col" *ngIf="currentUser && currentUser.role === 'STUDENT'">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of courseList;  index as ind">
+              <th scope="row">{{ind}}</th>
+              <td>{{item.name}}</td>
+              <td>{{item.instructor.name}}</td>
+              <td *ngIf="currentUser && currentUser.role === 'STUDENT'">
+                <button class="btn btn-info" (click)="enroll(item)">Enroll</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a href="https://angular.io" class="navbar-brand">
+    <img src="assets/imgs/angular.png" width="30" height="30" class="d-inline-block align-top"/>
+    Angular
+  </a>
+  <div class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a href="/home" class="nav-link">Home</a>
+    </li>
+    <li class="nav-item">
+      <a href="/student/{{currentUser.id}}" class="nav-link" *ngIf="isStudent">Student Panel</a>
+      <a href="/teacher" class="nav-link" *ngIf="isTeacher">Teacher Panel</a>
+      <a href="/manager" class="nav-link" *ngIf="isManager">Manager Panel</a>
+    </li>
+  </div>
+  <div class="navbar-nav ml-auto" *ngIf="!currentUser">
+    <li class="nav-item">
+      <a href="/register" class="nav-link">
+        <span class="glyphicon glyphicon-user"></span> Sign Up
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/login" class="nav-link">
+        <span class="glyphicon glyphicon-log-in"></span> Login
+      </a>
+    </li>
+  </div>
+  <div class="navbar-nav ml-auto" *ngIf="currentUser">
+    <li class="nav-item">
+      <a href="/profile" class="nav-link">
+        <span class="glyphicon glyphicon-user"></span> {{currentUser.name}}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a (click)="logOut()" class="nav-link">
+        <span class="glyphicon glyphicon-log-in"></span> LogOut
+      </a>
+    </li>
+  </div>
+</nav>
+<router-outlet></router-outlet>
